@@ -1,0 +1,68 @@
+.photoPreviewContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  padding: 10px;
+}
+
+.shuffle-row {
+  display: flex;
+  gap: 15px;
+}
+
+.slot {
+  height: 15rem;
+  /* width: 15rem; */
+  flex: 1;
+  border-radius: 5px;
+  padding: 0;
+  position: relative;
+}
+
+.item > div > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.item > div {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.item {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 40px;
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* .handle {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 20px;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.enable-input {
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding: 10px;
+} */
