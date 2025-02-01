@@ -526,11 +526,7 @@ function isAdmin($userId)
     $response = CRestCurrent::call("user.admin");
 
     $admins = [
-        1455, // Jackline Kariuki
-        1043, // Kevin Singh
-        154, // Eduard Shtern
-        1799, // Nida Ayshathun
-        1509, // VortexWeb
+        8, // VortexWeb
     ];
 
     return $response['result'] || in_array($userId, $admins);
