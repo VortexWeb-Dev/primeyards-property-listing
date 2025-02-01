@@ -63,7 +63,7 @@
         const baseUrl = 'https://primeyards.bitrix24.com/rest/8/pgu3tj84jm1lyk1z';
         const entityTypeId = 1052;
         const fields = [
-            'id', 'ufCrm14ReferenceNumber', 'ufCrm14OfferingType', 'ufCrm14PropertyType', 'ufCrm14Price', 'ufCrm14TitleEn', 'ufCrm14DescriptionEn', 'ufCrm14Size', 'ufCrm14Bedroom', 'ufCrm14Bathroom', 'ufCrm14PhotoLinks', 'ufCrm8AgentName', 'ufCrm14City', 'ufCrm14Community', 'ufCrm14SubCommunity', 'ufCrm14Tower', 'ufCrm14PfEnable', 'ufCrm14BayutEnable', 'ufCrm14DubizzleEnable', 'ufCrm14WebsiteEnable', 'ufCrm14ListingOwner', 'ufCrm14Status', 'ufCrm14RentalPeriod', 'createdTime'
+            'id', 'ufCrm14ReferenceNumber', 'ufCrm14OfferingType', 'ufCrm14PropertyType', 'ufCrm14Price', 'ufCrm14TitleEn', 'ufCrm14DescriptionEn', 'ufCrm14Size', 'ufCrm14Bedroom', 'ufCrm14Bathroom', 'ufCrm14PhotoLinks', 'ufCrm14AgentName', 'ufCrm14City', 'ufCrm14Community', 'ufCrm14SubCommunity', 'ufCrm14Tower', 'ufCrm14PfEnable', 'ufCrm14BayutEnable', 'ufCrm14DubizzleEnable', 'ufCrm14WebsiteEnable', 'ufCrm14ListingOwner', 'ufCrm14Status', 'ufCrm14RentalPeriod', 'createdTime'
         ];
         const orderBy = {
             id: 'desc'
