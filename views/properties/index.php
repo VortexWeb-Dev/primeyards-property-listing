@@ -226,7 +226,7 @@
                         </p>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
-                        <p class="">${property.ufCrm8AgentName || ''}</p> 
+                        <p class="">${property.ufCrm14AgentName || ''}</p> 
                         <p class="">${property.ufCrm14ListingOwner || ''}</p> 
                     </td>
                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
