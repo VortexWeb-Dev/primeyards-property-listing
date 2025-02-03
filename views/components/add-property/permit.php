@@ -4,8 +4,8 @@
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-4">
         <!-- Column 1 -->
         <div class="max-w-sm">
-            <label for="rera_permit_number" class="block text-sm font-medium mb-2">RERA Permit Number <span class="text-danger">*</span></label>
-            <input type="text" id="rera_permit_number" name="rera_permit_number" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required>
+            <label for="rera_permit_number" class="block text-sm font-medium mb-2">RERA Permit Number</label>
+            <input type="text" id="rera_permit_number" name="rera_permit_number" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
         </div>
         <!-- Column 2 -->
         <div class="max-w-sm">
