@@ -96,9 +96,9 @@
             document.getElementById('property-location').textContent = property.ufCrm14Location || 'N/A';
             document.getElementById('property-status').textContent = property.ufCrm14Status || 'N/A';
             document.getElementById('property-owner').textContent = property.ufCrm14ListingOwner || 'N/A';
-            document.getElementById('agent-name').textContent = property.ufCrm8AgentName || 'N/A';
-            document.getElementById('agent-phone').textContent = property.ufCrm8AgentPhone || 'N/A';
-            document.getElementById('agent-email').textContent = property.ufCrm8AgentEmail || 'N/A';
+            document.getElementById('agent-name').textContent = property.ufCrm14AgentName || 'N/A';
+            document.getElementById('agent-phone').textContent = property.ufCrm14AgentPhone || 'N/A';
+            document.getElementById('agent-email').textContent = property.ufCrm14AgentEmail || 'N/A';
             document.getElementById('main-image').src = property.ufCrm14PhotoLinks[0] || 'https://via.placeholder.com/150';
 
             const images = property.ufCrm14PhotoLinks || [];

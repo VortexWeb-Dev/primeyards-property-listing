@@ -206,7 +206,7 @@
             'listing_title': '%ufCrm14TitleEn',
             'property_type': 'ufCrm14PropertyType',
             'saleRent': 'ufCrm14OfferingType',
-            'listing_agent': '%ufCrm8AgentName',
+            'listing_agent': '%ufCrm14AgentName',
             'developer': '%ufCrm14Developers',
             'listing_owner': '%ufCrm14ListingOwner',
             'landlordEmail': '%ufCrm14LandlordEmail',

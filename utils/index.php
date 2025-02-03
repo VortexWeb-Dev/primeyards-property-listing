@@ -11,7 +11,7 @@ function buildApiUrl($baseUrl, $entityTypeId, $fields, $start = 0)
         $selectParams .= "select[$index]=$field&";
     }
     $selectParams = rtrim($selectParams, '&');
-    return "$baseUrl/crm.item.list?entityTypeId=$entityTypeId&$selectParams&start=$start&filter[ufCrm13Status]=PUBLISHED";
+    return "$baseUrl/crm.item.list?entityTypeId=$entityTypeId&$selectParams&start=$start&filter[ufCrm14Status]=PUBLISHED";
 }
 
 function fetchAllProperties($baseUrl, $entityTypeId, $fields, $platform = null)
@@ -42,22 +42,22 @@ function fetchAllProperties($baseUrl, $entityTypeId, $fields, $platform = null)
             switch ($platform) {
                 case 'pf':
                     $allProperties = array_filter($allProperties, function ($property) {
-                        return $property['ufCrm13PfEnable'] === 'Y';
+                        return $property['ufCrm14PfEnable'] === 'Y';
                     });
                     break;
                 case 'bayut':
                     $allProperties = array_filter($allProperties, function ($property) {
-                        return $property['ufCrm13BayutEnable'] === 'Y';
+                        return $property['ufCrm14BayutEnable'] === 'Y';
                     });
                     break;
                 case 'dubizzle':
                     $allProperties = array_filter($allProperties, function ($property) {
-                        return $property['ufCrm13DubizzleEnable'] === 'Y';
+                        return $property['ufCrm14DubizzleEnable'] === 'Y';
                     });
                     break;
                 case 'website':
                     $allProperties = array_filter($allProperties, function ($property) {
-                        return $property['ufCrm13WebsiteEnable'] === 'Y';
+                        return $property['ufCrm14WebsiteEnable'] === 'Y';
                     });
                     break;
                 default:
@@ -74,7 +74,7 @@ function fetchAllProperties($baseUrl, $entityTypeId, $fields, $platform = null)
 
 function getPropertyPurpose($property)
 {
-    return ($property['ufCrm13OfferingType'] == 'RR' || $property['ufCrm13OfferingType'] == 'CR') ? 'Rent' : 'Buy';
+    return ($property['ufCrm14OfferingType'] == 'RR' || $property['ufCrm14OfferingType'] == 'CR') ? 'Rent' : 'Buy';
 }
 
 function getPropertyType($property)
@@ -104,15 +104,15 @@ function getPropertyType($property)
         "SA" => "Staff Accommodation"
     );
 
-    return $property_types[$property['ufCrm13PropertyType']] ?? '';
+    return $property_types[$property['ufCrm14PropertyType']] ?? '';
 }
 
 function getPermitNumber($property)
 {
-    if (!empty($property['ufCrm13PermitNumber'])) {
-        return $property['ufCrm13PermitNumber'];
+    if (!empty($property['ufCrm14PermitNumber'])) {
+        return $property['ufCrm14PermitNumber'];
     }
-    return $property['ufCrm13ReraPermitNumber'] ?? '';
+    return $property['ufCrm14ReraPermitNumber'] ?? '';
 }
 
 function getFullAmenityName($shortCode)
@@ -223,43 +223,43 @@ function formatField($field, $value, $type = 'string')
 
 function formatPriceOnApplication($property)
 {
-    $priceOnApplication = ($property['ufCrm13HidePrice'] === 'Y') ? 'Yes' : 'No';
+    $priceOnApplication = ($property['ufCrm14HidePrice'] === 'Y') ? 'Yes' : 'No';
     return formatField('price_on_application', $priceOnApplication);
 }
 
 function formatRentalPrice($property)
 {
-    if (empty($property['ufCrm13RentalPeriod'])) {
-        return formatField('price', $property['ufCrm13Price']);
+    if (empty($property['ufCrm14RentalPeriod'])) {
+        return formatField('price', $property['ufCrm14Price']);
     }
 
-    switch ($property['ufCrm13RentalPeriod']) {
+    switch ($property['ufCrm14RentalPeriod']) {
         case 'Y':
-            return formatField('price', $property['ufCrm13Price'], 'yearly');
+            return formatField('price', $property['ufCrm14Price'], 'yearly');
         case 'M':
-            return formatField('price', $property['ufCrm13Price'], 'monthly');
+            return formatField('price', $property['ufCrm14Price'], 'monthly');
         case 'W':
-            return formatField('price', $property['ufCrm13Price'], 'weekly');
+            return formatField('price', $property['ufCrm14Price'], 'weekly');
         case 'D':
-            return formatField('price', $property['ufCrm13Price'], 'daily');
+            return formatField('price', $property['ufCrm14Price'], 'daily');
         default:
-            return formatField('price', $property['ufCrm13Price']);
+            return formatField('price', $property['ufCrm14Price']);
     }
 }
 
 function formatBedroom($property)
 {
-    return formatField('bedroom', ($property['ufCrm13Bedroom'] > 7) ? '7+' : $property['ufCrm13Bedroom']);
+    return formatField('bedroom', ($property['ufCrm14Bedroom'] > 7) ? '7+' : $property['ufCrm14Bedroom']);
 }
 
 function formatBathroom($property)
 {
-    return formatField('bathroom', ($property['ufCrm13Bathroom'] > 7) ? '7+' : $property['ufCrm13Bathroom']);
+    return formatField('bathroom', ($property['ufCrm14Bathroom'] > 7) ? '7+' : $property['ufCrm14Bathroom']);
 }
 
 function formatFurnished($property)
 {
-    $furnished = $property['ufCrm13Furnished'] ?? '';
+    $furnished = $property['ufCrm14Furnished'] ?? '';
     if ($furnished) {
         switch ($furnished) {
             case 'furnished':
@@ -278,11 +278,11 @@ function formatFurnished($property)
 function formatAgent($property)
 {
     $xml = '<agent>';
-    $xml .= formatField('id', $property['ufCrm13AgentId']);
-    $xml .= formatField('name', $property['ufCrm13AgentName']);
-    $xml .= formatField('email', $property['ufCrm13AgentEmail']);
-    $xml .= formatField('phone', $property['ufCrm13AgentPhone']);
-    $xml .= formatField('photo', $property['ufCrm13AgentPhoto'] ?? 'https://youtupia.com/thinkrealty/images/agent-placeholder.webp');
+    $xml .= formatField('id', $property['ufCrm14AgentId']);
+    $xml .= formatField('name', $property['ufCrm14AgentName']);
+    $xml .= formatField('email', $property['ufCrm14AgentEmail']);
+    $xml .= formatField('phone', $property['ufCrm14AgentPhone']);
+    $xml .= formatField('photo', $property['ufCrm14AgentPhoto'] ?? 'https://youtupia.com/thinkrealty/images/agent-placeholder.webp');
     $xml .= '</agent>';
 
     return $xml;
@@ -307,10 +307,10 @@ function formatGeopoints($property)
 {
     $geopoints = "";
 
-    if (!empty($property['ufCrm13Latitude']) && !empty($property['ufCrm13Longitude'])) {
-        $geopoints = ($property['ufCrm13Latitude'] . ',' . $property['ufCrm13Longitude'] ?? '');
+    if (!empty($property['ufCrm14Latitude']) && !empty($property['ufCrm14Longitude'])) {
+        $geopoints = ($property['ufCrm14Latitude'] . ',' . $property['ufCrm14Longitude'] ?? '');
     } else {
-        $geopoints = ($property['ufCrm13Geopoints'] ?? '');
+        $geopoints = ($property['ufCrm14Geopoints'] ?? '');
     }
 
     return formatField('geopoints', $geopoints);
@@ -318,7 +318,7 @@ function formatGeopoints($property)
 
 function formatCompletionStatus($property)
 {
-    $status = $property['ufCrm13ProjectStatus'] ?? '';
+    $status = $property['ufCrm14ProjectStatus'] ?? '';
     switch ($status) {
         case 'Completed':
         case 'ready_secondary':
@@ -343,45 +343,45 @@ function generatePfXml($properties)
     foreach ($properties as $property) {
         $xml .= '<property last_update="' . formatDate($property['updatedTime'] ?? '') . '" id="' . htmlspecialchars($property['id'] ?? '') . '">';
 
-        $xml .= formatField('reference_number', $property['ufCrm13ReferenceNumber']);
+        $xml .= formatField('reference_number', $property['ufCrm14ReferenceNumber']);
         $xml .= formatField('permit_number', getPermitNumber($property));
 
-        $xml .= formatField('dtcm_permit', $property['ufCrm13DtcmPermitNumber']);
-        $xml .= formatField('offering_type', $property['ufCrm13OfferingType']);
-        $xml .= formatField('property_type', $property['ufCrm13PropertyType']);
+        $xml .= formatField('dtcm_permit', $property['ufCrm14DtcmPermitNumber']);
+        $xml .= formatField('offering_type', $property['ufCrm14OfferingType']);
+        $xml .= formatField('property_type', $property['ufCrm14PropertyType']);
         $xml .= formatPriceOnApplication($property);
         $xml .= formatRentalPrice($property);
 
-        $xml .= formatField('service_charge', $property['ufCrm13ServiceCharge']);
-        $xml .= formatField('cheques', $property['ufCrm13NoOfCheques']);
-        $xml .= formatField('city', $property['ufCrm13City']);
-        $xml .= formatField('community', $property['ufCrm13Community']);
-        $xml .= formatField('sub_community', $property['ufCrm13SubCommunity']);
-        $xml .= formatField('property_name', $property['ufCrm13Tower']);
+        $xml .= formatField('service_charge', $property['ufCrm14ServiceCharge']);
+        $xml .= formatField('cheques', $property['ufCrm14NoOfCheques']);
+        $xml .= formatField('city', $property['ufCrm14City']);
+        $xml .= formatField('community', $property['ufCrm14Community']);
+        $xml .= formatField('sub_community', $property['ufCrm14SubCommunity']);
+        $xml .= formatField('property_name', $property['ufCrm14Tower']);
 
-        $xml .= formatField('title_en', $property['ufCrm13TitleEn']);
-        $xml .= formatField('title_ar', $property['ufCrm13TitleAr']);
-        $xml .= formatField('description_en', $property['ufCrm13DescriptionEn']);
-        $xml .= formatField('description_ar', $property['ufCrm13DescriptionAr']);
+        $xml .= formatField('title_en', $property['ufCrm14TitleEn']);
+        $xml .= formatField('title_ar', $property['ufCrm14TitleAr']);
+        $xml .= formatField('description_en', $property['ufCrm14DescriptionEn']);
+        $xml .= formatField('description_ar', $property['ufCrm14DescriptionAr']);
 
-        $xml .= formatField('plot_size', $property['ufCrm13TotalPlotSize']);
-        $xml .= formatField('size', $property['ufCrm13Size']);
-        // $xml .= formatField('bedroom', $property['ufCrm13Bedroom']);
+        $xml .= formatField('plot_size', $property['ufCrm14TotalPlotSize']);
+        $xml .= formatField('size', $property['ufCrm14Size']);
+        // $xml .= formatField('bedroom', $property['ufCrm14Bedroom']);
         $xml .= formatBedroom($property);
         $xml .= formatBathroom($property);
 
         $xml .= formatAgent($property);
-        $xml .= formatField('build_year', $property['ufCrm13BuildYear']);
-        $xml .= formatField('parking', $property['ufCrm13Parking']);
+        $xml .= formatField('build_year', $property['ufCrm14BuildYear']);
+        $xml .= formatField('parking', $property['ufCrm14Parking']);
         $xml .= formatFurnished($property);
         $xml .= formatField('view360', $property['ufCrm_14_360_VIEW_URL']);
-        $xml .= formatPhotos($property['ufCrm13PhotoLinks']);
-        $xml .= formatField('floor_plan', $property['ufCrm13FloorPlan']);
+        $xml .= formatPhotos($property['ufCrm14PhotoLinks']);
+        $xml .= formatField('floor_plan', $property['ufCrm14FloorPlan']);
         $xml .= formatGeopoints($property);
-        $xml .= formatField('availability_date', $property['ufCrm13AvailableFrom'], 'date');
-        $xml .= formatField('video_tour_url', $property['ufCrm13VideoTourUrl']);
-        $xml .= formatField('developer', $property['ufCrm13Developers']);
-        $xml .= formatField('project_name', $property['ufCrm13ProjectName']);
+        $xml .= formatField('availability_date', $property['ufCrm14AvailableFrom'], 'date');
+        $xml .= formatField('video_tour_url', $property['ufCrm14VideoTourUrl']);
+        $xml .= formatField('developer', $property['ufCrm14Developers']);
+        $xml .= formatField('project_name', $property['ufCrm14ProjectName']);
         $xml .= formatCompletionStatus($property);
 
         $xml .= '</property>';
@@ -400,86 +400,86 @@ function generateBayutXml($properties)
         $xml .= '<Property id="' . htmlspecialchars($property['id'] ?? '') . '">';
 
         // Ensure proper CDATA wrapping and no misplaced closing tags
-        $xml .= '<Property_Ref_No><![CDATA[' . ($property['ufCrm13ReferenceNumber'] ?? '') . ']]></Property_Ref_No>';
+        $xml .= '<Property_Ref_No><![CDATA[' . ($property['ufCrm14ReferenceNumber'] ?? '') . ']]></Property_Ref_No>';
         $xml .= '<Permit_Number><![CDATA[' . getPermitNumber($property) . ']]></Permit_Number>';
         $xml .= '<Property_Status>live</Property_Status>';
         $xml .= '<Property_purpose><![CDATA[' . getPropertyPurpose($property) . ']]></Property_purpose>';
         $xml .= '<Property_Type><![CDATA[' . getPropertyType($property) . ']]></Property_Type>';
-        $xml .= '<Property_Size><![CDATA[' . ($property['ufCrm13Size'] ?? '') . ']]></Property_Size>';
+        $xml .= '<Property_Size><![CDATA[' . ($property['ufCrm14Size'] ?? '') . ']]></Property_Size>';
         $xml .= '<Property_Size_Unit>SQFT</Property_Size_Unit>';
 
         // Ensure proper condition for optional fields
-        if (!empty($property['ufCrm13TotalPlotSize'])) {
-            $xml .= '<plotArea><![CDATA[' . $property['ufCrm13TotalPlotSize'] . ']]></plotArea>';
+        if (!empty($property['ufCrm14TotalPlotSize'])) {
+            $xml .= '<plotArea><![CDATA[' . $property['ufCrm14TotalPlotSize'] . ']]></plotArea>';
         }
 
-        $xml .= '<Bedrooms><![CDATA[' . (($property['ufCrm13Bedroom'] === 0) ? -1 : ($property['ufCrm13Bedroom'] > 10 ? "10+" : $property['ufCrm13Bedroom'])) . ']]></Bedrooms>';
-        $xml .= '<Bathrooms><![CDATA[' . ($property['ufCrm13Bathroom'] ?? '') . ']]></Bathrooms>';
+        $xml .= '<Bedrooms><![CDATA[' . (($property['ufCrm14Bedroom'] === 0) ? -1 : ($property['ufCrm14Bedroom'] > 10 ? "10+" : $property['ufCrm14Bedroom'])) . ']]></Bedrooms>';
+        $xml .= '<Bathrooms><![CDATA[' . ($property['ufCrm14Bathroom'] ?? '') . ']]></Bathrooms>';
 
-        $is_offplan = ($property['ufCrm13ProjectStatus'] === 'offplan_primary' || $property['ufCrm13ProjectStatus'] === 'offplan_secondary') ? 'Yes' : 'No';
+        $is_offplan = ($property['ufCrm14ProjectStatus'] === 'offplan_primary' || $property['ufCrm14ProjectStatus'] === 'offplan_secondary') ? 'Yes' : 'No';
         $xml .= '<Off_plan><![CDATA[' . $is_offplan . ']]></Off_plan>';
 
         $xml .= '<Portals>';
-        if ($property['ufCrm13BayutEnable'] === 'Y') {
+        if ($property['ufCrm14BayutEnable'] === 'Y') {
             $xml .= '<Portal>Bayut</Portal>';
         }
-        if ($property['ufCrm13DubizzleEnable'] === 'Y') {
+        if ($property['ufCrm14DubizzleEnable'] === 'Y') {
             $xml .= '<Portal>Dubizzle</Portal>';
         }
         $xml .= '</Portals>';
 
-        $xml .= '<Property_Title><![CDATA[' . ($property['ufCrm13TitleEn'] ?? '') . ']]></Property_Title>';
-        $xml .= '<Property_Description><![CDATA[' . ($property['ufCrm13DescriptionEn'] ?? '') . ']]></Property_Description>';
+        $xml .= '<Property_Title><![CDATA[' . ($property['ufCrm14TitleEn'] ?? '') . ']]></Property_Title>';
+        $xml .= '<Property_Description><![CDATA[' . ($property['ufCrm14DescriptionEn'] ?? '') . ']]></Property_Description>';
 
-        if (!empty($property['ufCrm13TitleAr'])) {
-            $xml .= '<Property_Title_AR><![CDATA[' . ($property['ufCrm13TitleAr'] ?? '') . ']]></Property_Title_AR>';
+        if (!empty($property['ufCrm14TitleAr'])) {
+            $xml .= '<Property_Title_AR><![CDATA[' . ($property['ufCrm14TitleAr'] ?? '') . ']]></Property_Title_AR>';
         }
-        if (!empty($property['ufCrm13DescriptionAr'])) {
-            $xml .= '<Property_Description_AR><![CDATA[' . ($property['ufCrm13DescriptionAr'] ?? '') . ']]></Property_Description_AR>';
+        if (!empty($property['ufCrm14DescriptionAr'])) {
+            $xml .= '<Property_Description_AR><![CDATA[' . ($property['ufCrm14DescriptionAr'] ?? '') . ']]></Property_Description_AR>';
         }
 
-        $xml .= '<Price><![CDATA[' . ($property['ufCrm13Price'] ?? '') . ']]></Price>';
+        $xml .= '<Price><![CDATA[' . ($property['ufCrm14Price'] ?? '') . ']]></Price>';
 
-        if ($property['ufCrm13RentalPeriod'] == 'Y') {
+        if ($property['ufCrm14RentalPeriod'] == 'Y') {
             $xml .= '<Rent_Frequency>Yearly</Rent_Frequency>';
-        } elseif ($property['ufCrm13RentalPeriod'] == 'M') {
+        } elseif ($property['ufCrm14RentalPeriod'] == 'M') {
             $xml .= '<Rent_Frequency>Monthly</Rent_Frequency>';
-        } elseif ($property['ufCrm13RentalPeriod'] == 'W') {
+        } elseif ($property['ufCrm14RentalPeriod'] == 'W') {
             $xml .= '<Rent_Frequency>Weekly</Rent_Frequency>';
-        } elseif ($property['ufCrm13RentalPeriod'] == 'D') {
+        } elseif ($property['ufCrm14RentalPeriod'] == 'D') {
             $xml .= '<Rent_Frequency>Daily</Rent_Frequency>';
         }
 
-        if ($property['ufCrm13Furnished'] === 'furnished') {
+        if ($property['ufCrm14Furnished'] === 'furnished') {
             $xml .= '<Furnished>Yes</Furnished>';
-        } elseif ($property['ufCrm13Furnished'] === 'unfurnished') {
+        } elseif ($property['ufCrm14Furnished'] === 'unfurnished') {
             $xml .= '<Furnished>No</Furnished>';
-        } elseif ($property['ufCrm13Furnished'] === 'semi-furnished') {
+        } elseif ($property['ufCrm14Furnished'] === 'semi-furnished') {
             $xml .= '<Furnished>Partly</Furnished>';
         }
 
-        if (!empty($property['ufCrm13SaleType'])) {
-            $xml .= '<offplanDetails_saleType><![CDATA[' . ($property['ufCrm13SaleType'] ?? '') . ']]></offplanDetails_saleType>';
+        if (!empty($property['ufCrm14SaleType'])) {
+            $xml .= '<offplanDetails_saleType><![CDATA[' . ($property['ufCrm14SaleType'] ?? '') . ']]></offplanDetails_saleType>';
         }
 
-        $xml .= '<City><![CDATA[' . ($property['ufCrm13BayutCity'] ?: $property['ufCrm13City'] ?? '') . ']]></City>';
-        $xml .= '<Locality><![CDATA[' . ($property['ufCrm13BayutCommunity'] ?: $property['ufCrm13Community'] ?? '') . ']]></Locality>';
-        $xml .= '<Sub_Locality><![CDATA[' . ($property['ufCrm13BayutSubCommunity'] ?: $property['ufCrm13SubCommunity'] ?? '') . ']]></Sub_Locality>';
-        $xml .= '<Tower_Name><![CDATA[' . ($property['ufCrm13BayutTower'] ?: $property['ufCrm13Tower'] ?? '') . ']]></Tower_Name>';
+        $xml .= '<City><![CDATA[' . ($property['ufCrm14BayutCity'] ?: $property['ufCrm14City'] ?? '') . ']]></City>';
+        $xml .= '<Locality><![CDATA[' . ($property['ufCrm14BayutCommunity'] ?: $property['ufCrm14Community'] ?? '') . ']]></Locality>';
+        $xml .= '<Sub_Locality><![CDATA[' . ($property['ufCrm14BayutSubCommunity'] ?: $property['ufCrm14SubCommunity'] ?? '') . ']]></Sub_Locality>';
+        $xml .= '<Tower_Name><![CDATA[' . ($property['ufCrm14BayutTower'] ?: $property['ufCrm14Tower'] ?? '') . ']]></Tower_Name>';
 
-        $xml .= '<Listing_Agent><![CDATA[' . ($property['ufCrm13AgentName'] ?? '') . ']]></Listing_Agent>';
-        $xml .= '<Listing_Agent_Phone><![CDATA[' . ($property['ufCrm13AgentPhone'] ?? '') . ']]></Listing_Agent_Phone>';
-        $xml .= '<Listing_Agent_Email><![CDATA[' . ($property['ufCrm13AgentEmail'] ?? '') . ']]></Listing_Agent_Email>';
+        $xml .= '<Listing_Agent><![CDATA[' . ($property['ufCrm14AgentName'] ?? '') . ']]></Listing_Agent>';
+        $xml .= '<Listing_Agent_Phone><![CDATA[' . ($property['ufCrm14AgentPhone'] ?? '') . ']]></Listing_Agent_Phone>';
+        $xml .= '<Listing_Agent_Email><![CDATA[' . ($property['ufCrm14AgentEmail'] ?? '') . ']]></Listing_Agent_Email>';
 
         $xml .= '<Images>';
-        foreach ($property['ufCrm13PhotoLinks'] ?? [] as $image) {
+        foreach ($property['ufCrm14PhotoLinks'] ?? [] as $image) {
             $xml .= '<Image last_update="' . date('Y-m-d H:i:s') . '"><![CDATA[' . $image . ']]></Image>';
         }
         $xml .= '</Images>';
 
-        if (!empty($property['ufCrm13Amenities']) && is_array($property['ufCrm13Amenities'])) {
+        if (!empty($property['ufCrm14Amenities']) && is_array($property['ufCrm14Amenities'])) {
             $xml .= '<Features>';
-            foreach ($property['ufCrm13Amenities'] as $amenity) {
+            foreach ($property['ufCrm14Amenities'] as $amenity) {
                 $fullName = getFullAmenityName(trim($amenity));
                 $xml .= '<Feature><![CDATA[' . $fullName . ']]></Feature>';
             }

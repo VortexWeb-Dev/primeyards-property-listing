@@ -206,7 +206,7 @@
             if (photos.length > 0) {
                 const fixedPhotos = photos.replace(/\\'/g, '"');
                 const photoArray = JSON.parse(fixedPhotos);
-                const watermarkPath = 'assets/images/watermark.png';
+                const watermarkPath = 'assets/images/watermark.webp';
                 const uploadedImages = await processBase64Images(photoArray, watermarkPath);
 
                 fields["ufCrm14PhotoLinks"] = uploadedImages.length > 0 ? [...existingPhotos, ...uploadedImages] : [...existingPhotos];
@@ -225,7 +225,7 @@
 
                 const fixedFloorplans = floorplans.replace(/\\'/g, '"');
                 const floorplanArray = JSON.parse(fixedFloorplans);
-                const watermarkPath = 'assets/images/watermark.png';
+                const watermarkPath = 'assets/images/watermark.webp';
                 const uploadedFloorplans = await processBase64Images(floorplanArray, watermarkPath);
 
 

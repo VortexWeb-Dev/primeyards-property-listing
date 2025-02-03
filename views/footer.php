@@ -1153,8 +1153,10 @@
             document.getElementById('bayut_subcommunity').value = property.ufCrm14BayutSubCommunity;
             document.getElementById('bayut_building').value = property.ufCrm14BayutTower;
 
-            document.getElementById('latitude').value = property.ufCrm14Latitude;
-            document.getElementById('longitude').value = property.ufCrm14Longitude;
+            const geoPoints = property.ufCrm14Geopoints.split(',');
+            document.getElementById('latitude').value = geoPoints[0]; // Latitude
+            document.getElementById('longitude').value = geoPoints[1]; // Longitude
+
 
             // Photos and Videos
             document.getElementById('video_tour_url').value = property.ufCrm14VideoTourUrl;
@@ -1208,7 +1210,7 @@
                 }
             }
 
-            ensureOptionExistsAndSelect('listing_agent', property.ufCrm8AgentId, property.ufCrm8AgentName);
+            ensureOptionExistsAndSelect('listing_agent', property.ufCrm14AgentId, property.ufCrm14AgentName);
             ensureOptionExistsAndSelect('listing_owner', property.ufCrm14ListingOwner, property.ufCrm14ListingOwner);
             ensureOptionExistsAndSelect('developer', property.ufCrm14Developers, property.ufCrm14Developers);
 

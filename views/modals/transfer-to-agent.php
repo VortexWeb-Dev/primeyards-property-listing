@@ -79,12 +79,12 @@
         if (!agent) return console.error('Agent not found');
 
         const fields = {
-            "ufCrm8AgentId": agent.ufCrm8AgentId,
-            "ufCrm8AgentName": agent.ufCrm8AgentName,
-            "ufCrm8AgentEmail": agent.ufCrm8AgentName,
-            "ufCrm8AgentPhone": agent.ufCrm8AgentMobile,
-            "ufCrm8AgentPhoto": agent.ufCrm8AgentPhoto,
-            "ufCrm8AgentLicense": agent.ufCrm8AgentLicense
+            "ufCrm14AgentId": agent.ufCrm8AgentId,
+            "ufCrm14AgentName": agent.ufCrm8AgentName,
+            "ufCrm14AgentEmail": agent.ufCrm8AgentName,
+            "ufCrm14AgentPhone": agent.ufCrm8AgentMobile,
+            "ufCrm14AgentPhoto": agent.ufCrm8AgentPhoto,
+            "ufCrm14AgentLicense": agent.ufCrm8AgentLicense
         };
 
         const propertyIds = formData.get('transferAgentPropertyIds').split(',');

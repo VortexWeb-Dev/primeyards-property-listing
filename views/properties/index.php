@@ -173,26 +173,26 @@
                             </ul>
                         </div>
                     </td>
-                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 text-wrap">${property.ufCrm14ReferenceNumber || 'N/A'}</td>
+                    <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800 text-wrap">${property.ufCrm14ReferenceNumber || ''}</td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <div class="flex">
-                            <img class="w-20 h-20 rounded object-cover mr-4" src="${property.ufCrm14PhotoLinks[0] || 'https://via.placeholder.com/150'}" alt="${property.ufCrm14TitleEn || 'N/A'}">
+                            <img class="w-20 h-20 rounded object-cover mr-4" src="${property.ufCrm14PhotoLinks[0] || 'https://via.placeholder.com/150'}" alt="${property.ufCrm14TitleEn || ''}">
                             <div class="text-sm">
-                                <p class="text-gray-800 font-semibold">${property.ufCrm14TitleEn || 'N/A'}</p>
-                                <p class="text-gray-400 text-wrap max-w-full truncate">${property.ufCrm14DescriptionEn.slice(0, 60) + '...' || 'N/A'}</p>
+                                <p class="text-gray-800 font-semibold">${property.ufCrm14TitleEn || ''}</p>
+                                <p class="text-gray-400 text-wrap max-w-full truncate">${property.ufCrm14DescriptionEn.slice(0, 60) + '...' || ''}</p>
                             </div>
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <div class="flex flex-col items-start gap-1">
-                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-bath mr-1"></i>${property.ufCrm14Bathroom || 'N/A'}</span>
-                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-bed mr-1"></i>${property.ufCrm14Bedroom === 0 ? 'Studio' : property.ufCrm14Bedroom === 11 ? '10+' : property.ufCrm14Bedroom || 'N/A'}</span>
+                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-bath mr-1"></i>${property.ufCrm14Bathroom}</span>
+                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-bed mr-1"></i>${property.ufCrm14Bedroom === 0 ? 'Studio' : property.ufCrm14Bedroom === 11 ? '10+' : property.ufCrm14Bedroom || ''}</span>
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
                         <div class="flex flex-col items-start gap-1">
-                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-ruler-combined mr-1"></i>${property.ufCrm14Size + ' sqft' || 'N/A'}</span>
-                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-ruler-horizontal mr-1"></i>${sqftToSqm(property.ufCrm14Size) + ' sqm' || 'N/A'}</span>
+                            <span class="text-sm text-muted" title="Bathrooms"><i class="fa-solid fa-ruler-combined mr-1"></i>${property.ufCrm14Size + ' sqft' || ''}</span>
+                            <span class="text-sm text-muted" title="Bedrooms"><i class="fa-solid fa-ruler-horizontal mr-1"></i>${sqftToSqm(property.ufCrm14Size) + ' sqm' || ''}</span>
                         </div>
                     </td>
                     <td class="px-3 py-4 whitespace-nowrap text-xs font-medium text-gray-800">
