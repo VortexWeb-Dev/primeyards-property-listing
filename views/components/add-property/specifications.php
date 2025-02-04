@@ -68,8 +68,8 @@
         </div>
         <!-- Column 3 -->
         <div class="max-w-sm">
-            <label for="bedrooms" class="block text-sm font-medium mb-2">No. of Bedrooms <span class="text-danger">*</span></label>
-            <select id="bedrooms" name="bedrooms" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required>
+            <label for="bedrooms" class="block text-sm font-medium mb-2">No. of Bedrooms</label>
+            <select id="bedrooms" name="bedrooms" class="py-3 px-4 pe-9 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
                 <option value="">Please select</option>
                 <option value="0">Studio</option>
                 <option value="1">1</option>
@@ -88,8 +88,8 @@
 
         <!-- Column 1 -->
         <div class="max-w-sm">
-            <label for="bathrooms" class="block text-sm font-medium mb-2">No. of Bathrooms <span class="text-danger">*</span></label>
-            <input type="number" id="bathrooms" name="bathrooms" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none" required>
+            <label for="bathrooms" class="block text-sm font-medium mb-2">No. of Bathrooms</label>
+            <input type="number" id="bathrooms" name="bathrooms" class="py-3 px-4 block w-full border-gray-200 rounded-lg text-sm focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none">
         </div>
         <!-- Column 2 -->
         <div class="max-w-sm">
