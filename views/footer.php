@@ -152,7 +152,7 @@
 
         switch (action) {
             case 'copyLink':
-                const link = `https://lightgray-kudu-834713.hostingersite.com/property-listing-primeyards/index.php?page=view-property&id=${propertyId}`;
+                const link = `https://connecteo.in/primeyards-property-listing/?page=view-property&id=${propertyId}`;
                 navigator.clipboard.writeText(link);
                 alert('Link copied to clipboard.');
                 reloadRequired = false;
