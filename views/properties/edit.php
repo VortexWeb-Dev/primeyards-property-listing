@@ -53,6 +53,20 @@
             document.getElementById("rental_period").removeAttribute("required");
             document.querySelector('label[for="rental_period"]').innerHTML = 'Rental Period (if rental)';
         }
+
+        if (offeringType == 'RR' || offeringType == 'RS') {
+            document.getElementById("bedrooms").setAttribute("required", true);
+            document.querySelector('label[for="bedrooms"]').innerHTML = 'No. of Bedrooms <span class="text-danger">*</span>';
+
+            document.getElementById("bathrooms").setAttribute("required", true);
+            document.querySelector('label[for="bathrooms"]').innerHTML = 'No. of Bathrooms <span class="text-danger">*</span>';
+        } else {
+            document.getElementById("bedrooms").removeAttribute("required");
+            document.querySelector('label[for="bedrooms"]').innerHTML = 'No. of Bedrooms';
+
+            document.getElementById("bathrooms").removeAttribute("required");
+            document.querySelector('label[for="bathrooms"]').innerHTML = 'No. of Bathrooms';
+        }
     })
 
     async function updateItem(entityTypeId, fields, id) {
