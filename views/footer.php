@@ -562,17 +562,17 @@
                 let watermarkWidth, watermarkHeight;
 
                 if (watermarkAspect > imageAspect) {
-                    watermarkWidth = width * 0.2;
+                    watermarkWidth = width * 0.4;
                     watermarkHeight = watermarkWidth / watermarkAspect;
                 } else {
-                    watermarkHeight = height * 0.2;
+                    watermarkHeight = height * 0.4;
                     watermarkWidth = watermarkHeight * watermarkAspect;
                 }
 
                 const xPosition = (width - watermarkWidth) / 2;
                 const yPosition = (height - watermarkHeight) / 2;
 
-                ctx.globalAlpha = 0.6;
+                ctx.globalAlpha = 0.5;
 
                 // Draw the watermark
                 ctx.drawImage(watermarkImage, xPosition, yPosition, watermarkWidth, watermarkHeight);
