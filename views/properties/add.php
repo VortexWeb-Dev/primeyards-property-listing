@@ -213,7 +213,7 @@
         if (photos) {
             const fixedPhotos = photos.replace(/\\'/g, '"');
             const photoArray = JSON.parse(fixedPhotos);
-            const watermarkPath = 'assets/images/watermark.png';
+            const watermarkPath = 'assets/images/watermark.png?cache=' + new Date().getTime();
             const uploadedImages = await processBase64Images(photoArray, watermarkPath);
 
             if (uploadedImages.length > 0) {
@@ -226,7 +226,7 @@
         if (floorplan) {
             const fixedFloorplan = floorplan.replace(/\\'/g, '"');
             const floorplanArray = JSON.parse(fixedFloorplan);
-            const watermarkPath = 'assets/images/watermark.png';
+            const watermarkPath = 'assets/images/watermark.png?cache=' + new Date().getTime();
             const uploadedFloorplan = await processBase64Images(floorplanArray, watermarkPath);
 
             if (uploadedFloorplan.length > 0) {
