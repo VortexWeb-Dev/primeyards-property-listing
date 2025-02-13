@@ -99,7 +99,7 @@
             document.getElementById('agent-name').textContent = property.ufCrm14AgentName || 'N/A';
             document.getElementById('agent-phone').textContent = property.ufCrm14AgentPhone || 'N/A';
             document.getElementById('agent-email').textContent = property.ufCrm14AgentEmail || 'N/A';
-            document.getElementById('main-image').src = property.ufCrm14PhotoLinks[0] || 'https://via.placeholder.com/150';
+            document.getElementById('main-image').src = property.ufCrm14PhotoLinks[0] || 'https://placehold.jp/150x150.png';
 
             const images = property.ufCrm14PhotoLinks || [];
             const imageContainer = document.getElementById('property-images');
