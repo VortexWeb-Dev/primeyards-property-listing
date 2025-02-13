@@ -1,7 +1,7 @@
 <?php
 define('C_REST_WEB_HOOK_URL', 'https://primeyards.bitrix24.com/rest/8/pgu3tj84jm1lyk1z/');
-// define('C_REST_CLIENT_ID', 'local.6711e822d38b97.48529652');
-// define('C_REST_CLIENT_SECRET', 'w6aszi6PgwNfx5vGLDMfBUQa7M3Ktf8MpY216nEp3qtrddtEEl');
+define('C_REST_CLIENT_ID', 'local.679b213a868b89.56347382');
+define('C_REST_CLIENT_SECRET', '3pkSS63MPV1hTNGlb467G7h2SvcbaVQ51lEEk4yh3odA3Y9d8G');
 
 define('LISTINGS_ENTITY_TYPE_ID', 1052);
 define('AGENTS_ENTITY_TYPE_ID', 1040);
